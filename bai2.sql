@@ -2,6 +2,10 @@ DROP TRIGGER IF EXISTS prevent_status_revert;
 
 DELIMITER //
 
+
+UPDATE appointments 
+SET status = 'Completed' 
+WHERE appointment_id = 104;
 CREATE TRIGGER prevent_status_revert
 BEFORE UPDATE ON appointments
 FOR EACH ROW
@@ -12,4 +16,4 @@ BEGIN
     END IF;
 END //
 
-DELIMITER ;v
+DELIMITER ;
